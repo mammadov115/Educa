@@ -24,6 +24,7 @@
 			
 		{% endblock content %}
 	</div>
+	{% block include_js %}{% endblock include_js %}
 	<script type="text/javascript">
 		document.addEventListener('DOMContentLoaded', (event) => {
 			{% block domready %}
