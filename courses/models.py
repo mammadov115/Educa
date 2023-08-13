@@ -15,7 +15,6 @@ class Subject(models.Model):
 	def __str__(self):
 		return self.title
 
-
 class Course(models.Model):
 	owner = models.ForeignKey(User, related_name='courses_created', on_delete=models.CASCADE)
 	subject = models.ForeignKey(Subject, related_name='courses', on_delete=models.CASCADE)
@@ -23,11 +22,11 @@ class Course(models.Model):
 	slug = models.SlugField(max_length=200, unique=True)
 	overview = models.TextField()
 	created = models.DateTimeField(auto_now_add=True)
+	students = models.ManyToManyField(User, related_name='course_joined', blank=True)
 	
 
 	def __str__(self):
 		return self.title
-
 
 class Module(models.Model):
 	course = models.ForeignKey(Course, related_name='modules', on_delete=models.CASCADE)
@@ -52,7 +51,6 @@ class Content(models.Model):
 	class Meta:
 		ordering = ['order']
 
-
 class ItemBase(models.Model):
 	owner = models.ForeignKey(User, related_name='%(class)s_related', on_delete=models.CASCADE)
 	title = models.CharField(max_length=250)
@@ -76,3 +74,4 @@ class Image(ItemBase):
 
 class Video(ItemBase):
 	url = models.URLField()
+
