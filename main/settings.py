@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'students.apps.StudentsConfig',
     'embed_video',
-    'debug_toolbar'
+    'debug_toolbar',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
@@ -154,3 +155,10 @@ CACHE_MIDDLEWARE_KEY_PREFIX = 'educa'
 INTERNAL_IPS = [
     '127.0.0.1',
 ]
+
+# drf settings
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permission.DjangoModelPermissionOrAnonReadOnly'
+    ]
+}
