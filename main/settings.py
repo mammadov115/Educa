@@ -159,6 +159,6 @@ INTERNAL_IPS = [
 # drf settings
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permission.DjangoModelPermissionOrAnonReadOnly'
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ]
 }
